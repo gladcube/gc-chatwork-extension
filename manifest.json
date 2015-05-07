@@ -1,0 +1,32 @@
+{
+  "content_scripts": [
+    {
+      "css": [
+        "build/css/importer.css",
+        "bower_components/jquery-textcomplete/dist/jquery.textcomplete.css"
+      ],
+      "js": [ "build/js/app.js"],
+      "matches": [ "https://www.chatwork.com/*" ],
+      "run_at": "document_start"
+    },
+    {
+      "js": ["oauth2/oauth2_inject.js"],
+      "matches": ["http://www.google.com/robots.txt*"],
+      "run_at": "document_start"
+    }
+  ],
+  "background": {
+    "page": "/build/html/background/index.html"
+  },
+  "description": "An Google Chrome Extension of Chatwork for Glad Cube Inc.",
+  "icons": {},
+  "manifest_version": 2,
+  "name": "GC Chatwork Extension",
+  "permissions": [
+    "tabs",
+    "https://accounts.google.com/o/oauth2/token",
+    "https://spreadsheets.google.com/**"
+  ],
+  "web_accessible_resources": ["**/*"],
+  "version": "0.0.0"
+}
