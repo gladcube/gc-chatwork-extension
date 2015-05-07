@@ -12,3 +12,9 @@ module.exports =
     "bower_components/prelude-ls/browser/prelude-browser.js"
     "tmp/js/background/**/*.js"
   ]
+  files_to_zip: [
+    "./bower_components/**/*"
+    "./build/**/*"
+    "./oauth2/**/*"
+    "./manifest.json"
+  ]

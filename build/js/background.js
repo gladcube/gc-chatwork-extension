@@ -1313,8 +1313,11 @@ Main = {
     return this.initialize();
   },
   initialize: function(){
-    this.authorize();
+    this.set_google_auth();
     return this.listen();
+  },
+  set_google_auth: function(){
+    return this.google_auth;
   },
   authorize: function(cb){
     return this.google_auth.authorize(function(){
@@ -1333,7 +1336,7 @@ Main = {
         } else {
           return this$.authorize(function(){
             return sendResponse({
-              token: this.token
+              token: this$.token
             });
           });
         }

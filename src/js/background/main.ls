@@ -10,14 +10,15 @@ Main =
   execute: ->
     @initialize!
   initialize: ->
-    @authorize!
+    @set_google_auth!
     @listen!
+  set_google_auth: -> @google_auth # oauth2 のライブラリが LocalStorage の値を使うが、時間差があるので先にインスタンス化しておく。
   authorize: (cb)->
     @google_auth.authorize -> cb?!
   listen: ->
     chrome.runtime.on-message.add-listener (request, sender, send-response)~>
       switch request.method
-      | "get-token" => (if @token? then send-response token: @token else @authorize -> send-response token: @token)
+      | "get-token" => (if @token? then send-response token: @token else @authorize ~> send-response token: @token)
       | _ => send-response {}
 
 window.onload = -> Main.execute!

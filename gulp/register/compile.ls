@@ -5,4 +5,5 @@ module.exports = (gulp, plugins)->
       <[livescript stylus jade]>
       "concat"
       "copy"
+      # "zip"
       cb
