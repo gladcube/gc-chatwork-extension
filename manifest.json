@@ -28,5 +28,5 @@
     "https://spreadsheets.google.com/**"
   ],
   "web_accessible_resources": ["**/*"],
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
