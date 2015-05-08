@@ -7,7 +7,10 @@ Main =
     @watch!
     @listen!
     @get_token!
-  get_token: -> chrome.runtime.send-message method: "get-token", ({token}?)~> @token = token
+  get_token: ->
+    chrome.runtime.send-message method: "get-token", ({token}?)~>
+      if token? then @token = token
+      else set-timeout @~get_token, 200
   watch: ->
     Object.observe @, ~> if @is_ready then @read!
   read: -> Member.fetch!

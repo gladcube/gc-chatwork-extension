@@ -1334,11 +1334,8 @@ Main = {
             token: this$.token
           });
         } else {
-          return this$.authorize(function(){
-            return sendResponse({
-              token: this$.token
-            });
-          });
+          this$.authorize();
+          return sendResponse({});
         }
         break;
       default:

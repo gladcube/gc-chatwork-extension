@@ -18,7 +18,7 @@ Main =
   listen: ->
     chrome.runtime.on-message.add-listener (request, sender, send-response)~>
       switch request.method
-      | "get-token" => (if @token? then send-response token: @token else @authorize ~> send-response token: @token)
+      | "get-token" => (if @token? then send-response token: @token else @authorize!; send-response {})
       | _ => send-response {}
 
 window.onload = -> Main.execute!

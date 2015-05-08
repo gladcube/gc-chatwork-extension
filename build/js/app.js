@@ -12034,7 +12034,7 @@ OAuth2.prototype.authorize = function(callback) {
           newData.accessTokenDate = new Date().valueOf();
           newData.accessToken = at;
           newData.expiresIn = exp;
-          newData.refreshToken = re;
+          // newData.refreshToken = re;
           that.setSource(newData);
           // Callback when we finish refreshing
           if (callback) {
@@ -12172,7 +12172,11 @@ Main = {
       if (arg$ != null) {
         token = arg$.token;
       }
-      return this$.token = token;
+      if (token != null) {
+        return this$.token = token;
+      } else {
+        return setTimeout(bind$(this$, 'get_token'), 200);
+      }
     });
   },
   watch: function(){
@@ -12210,3 +12214,6 @@ Main = {
 $(document).on("ready", function(){
   return Main.execute();
 });
+function bind$(obj, key, target){
+  return function(){ return (target || obj)[key].apply(obj, arguments) };
+}
