@@ -12175,7 +12175,7 @@ Main = {
       if (token != null) {
         return this$.token = token;
       } else {
-        return setTimeout(bind$(this$, 'get_token'), 200);
+        return setTimeout(bind$(this$, 'get_token'), 500);
       }
     });
   },

@@ -1333,8 +1333,13 @@ Main = {
           return sendResponse({
             token: this$.token
           });
+        } else if (!this$.is_authorizing) {
+          this$.is_authorizing = true;
+          this$.authorize(function(){
+            return this$.is_authorizing = false;
+          });
+          return sendResponse({});
         } else {
-          this$.authorize();
           return sendResponse({});
         }
         break;
